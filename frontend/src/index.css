@@ -771,6 +771,617 @@ img {
   font-size: var(--fs-xs);
 }
 
+/* ── Daily Tasks ─────────────────────────────────────────── */
+.daily-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  gap: var(--space-3);
+}
+
+.daily-nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.daily-date {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  text-align: center;
+}
+
+.daily-today-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
+  color: #fff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 18px rgba(99, 102, 241, 0.6); }
+}
+
+.daily-today-btn {
+  font-size: var(--fs-xs);
+}
+
+/* Stats bar */
+.daily-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.daily-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 64px;
+}
+
+.daily-stat-value {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+.daily-stat-label {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.daily-stat-done .daily-stat-value { color: var(--clr-success); }
+.daily-stat-progress .daily-stat-value { color: var(--clr-accent); }
+.daily-stat-pending .daily-stat-value { color: var(--clr-warning); }
+
+/* Progress Ring */
+.daily-progress-ring {
+  position: relative;
+  width: 56px;
+  height: 56px;
+}
+
+.progress-ring-svg {
+  width: 56px;
+  height: 56px;
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  fill: none;
+  stroke: var(--clr-border);
+  stroke-width: 3;
+}
+
+.progress-ring-fill {
+  fill: none;
+  stroke: var(--clr-success);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s ease;
+}
+
+.progress-ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--clr-success);
+}
+
+/* Quick add */
+.daily-quick-add {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.daily-quick-add input {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--fs-sm);
+  color: var(--clr-text);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+  outline: none;
+}
+
+.daily-quick-add input:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Task list */
+.daily-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.daily-task-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+}
+
+.daily-task-item:hover {
+  border-color: var(--clr-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.daily-task-done {
+  opacity: 0.65;
+}
+
+.daily-task-done .daily-task-title {
+  text-decoration: line-through;
+  color: var(--clr-text-muted);
+}
+
+.daily-status-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-border);
+  background: transparent;
+  font-size: var(--fs-lg);
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  color: var(--clr-text-muted);
+}
+
+.daily-status-toggle:hover {
+  transform: scale(1.12);
+}
+
+.daily-status-toggle.status-pending {
+  border-color: var(--clr-warning);
+  color: var(--clr-warning);
+}
+
+.daily-status-toggle.status-in_progress {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+  background: rgba(167, 139, 250, 0.1);
+}
+
+.daily-status-toggle.status-done {
+  border-color: var(--clr-success);
+  color: var(--clr-success);
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.daily-status-spinner {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--clr-border);
+  border-top-color: var(--clr-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.daily-task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.daily-task-title {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--clr-text);
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.daily-task-title:hover {
+  color: var(--clr-primary);
+}
+
+.daily-task-desc {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: var(--space-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Empty state */
+.daily-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+  gap: var(--space-3);
+}
+
+.daily-empty-icon {
+  font-size: 3rem;
+  opacity: 0.6;
+}
+
+.daily-empty h3 {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.daily-empty p {
+  color: var(--clr-text-muted);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-2);
+}
+
+/* ── Monthly Progress ────────────────────────────────────── */
+.monthly-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+  gap: var(--space-3);
+}
+
+.monthly-nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.monthly-title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Summary cards */
+.monthly-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.summary-card-icon {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--clr-surface-2);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.summary-card-data {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-card-value {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+.summary-card-label {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.summary-card-done .summary-card-value { color: var(--clr-success); }
+.summary-card-rate .summary-card-value { color: var(--clr-secondary); }
+.summary-card-streak .summary-card-value { color: #f97316; }
+.summary-card-active .summary-card-value { color: var(--clr-accent); }
+
+/* Progress bar section */
+.monthly-progress-section {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.monthly-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.monthly-progress-pct {
+  color: var(--clr-text-muted);
+  font-weight: 500;
+}
+
+.monthly-progress-bar {
+  height: 10px;
+  background: var(--clr-surface-2);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.monthly-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--clr-primary), var(--clr-success));
+  border-radius: 5px;
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  min-width: 0;
+}
+
+.monthly-progress-legend {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legend-done .legend-dot { background: var(--clr-success); }
+.legend-progress .legend-dot { background: var(--clr-accent); }
+.legend-pending .legend-dot { background: var(--clr-warning); }
+
+/* Calendar heatmap */
+.monthly-calendar {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.calendar-day-name {
+  text-align: center;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--space-2) 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+}
+
+.calendar-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+  border: 1px solid transparent;
+  gap: 2px;
+  min-height: 48px;
+}
+
+.calendar-cell:hover:not(.calendar-cell-empty) {
+  transform: scale(1.06);
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-cell-empty {
+  cursor: default;
+  opacity: 0;
+}
+
+.calendar-cell-today {
+  border: 2px solid var(--clr-primary) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.25);
+}
+
+.calendar-cell-selected {
+  border: 2px solid var(--clr-accent) !important;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.3);
+}
+
+.calendar-cell-day {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.calendar-cell-count {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+}
+
+/* Heat levels */
+.heat-0 { background: var(--clr-surface-2); }
+.heat-1 { background: rgba(239, 68, 68, 0.2); }
+.heat-2 { background: rgba(245, 158, 11, 0.25); }
+.heat-3 { background: rgba(34, 197, 94, 0.2); }
+.heat-4 { background: rgba(34, 197, 94, 0.4); }
+
+.heat-4 .calendar-cell-day { color: var(--clr-success); }
+
+/* Calendar legend */
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-top: var(--space-4);
+}
+
+.calendar-legend-label {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin: 0 var(--space-1);
+}
+
+.calendar-legend-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+/* Day detail drawer */
+.monthly-day-detail {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.day-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.day-detail-header h3 {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.day-detail-empty {
+  color: var(--clr-text-muted);
+  font-size: var(--fs-sm);
+  text-align: center;
+  padding: var(--space-6) 0;
+}
+
+.day-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.day-detail-task {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--clr-surface-2);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.day-detail-task:hover {
+  background: var(--clr-border);
+}
+
+.day-detail-status {
+  font-size: var(--fs-base);
+  flex-shrink: 0;
+}
+
+.day-detail-status.status-done { color: var(--clr-success); }
+.day-detail-status.status-in_progress { color: var(--clr-accent); }
+.day-detail-status.status-pending { color: var(--clr-warning); }
+
+.day-detail-title {
+  flex: 1;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--clr-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 
 /* Tablet */
@@ -838,6 +1449,50 @@ img {
   .form-actions .btn {
     width: 100%;
   }
+
+  /* Daily tasks responsive */
+  .daily-date {
+    font-size: var(--fs-lg);
+  }
+
+  .daily-stats-bar {
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .daily-stat-value {
+    font-size: var(--fs-lg);
+  }
+
+  .daily-task-item {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .daily-quick-add {
+    flex-direction: column;
+  }
+
+  /* Monthly progress responsive */
+  .monthly-title {
+    font-size: var(--fs-xl);
+  }
+
+  .monthly-summary {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .summary-card {
+    padding: var(--space-4);
+  }
+
+  .calendar-cell {
+    min-height: 40px;
+  }
+
+  .calendar-cell-count {
+    display: none;
+  }
 }
 
 /* Mobile */
@@ -871,4 +1526,59 @@ img {
   .task-card-actions .btn {
     width: 100%;
   }
+
+  /* Daily tasks mobile */
+  .daily-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .daily-stats-bar {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .daily-stat {
+    flex-direction: row;
+    gap: var(--space-3);
+    min-width: auto;
+    width: 100%;
+    justify-content: space-between;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .daily-stat:last-child {
+    border-bottom: none;
+  }
+
+  .daily-task-item .badge {
+    display: none;
+  }
+
+  /* Monthly mobile */
+  .monthly-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-card-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .calendar-cell {
+    min-height: 32px;
+    border-radius: var(--radius-sm);
+  }
+
+  .calendar-cell-day {
+    font-size: var(--fs-xs);
+  }
+
+  .monthly-progress-legend {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
 }
+

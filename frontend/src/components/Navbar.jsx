@@ -54,6 +54,12 @@ export default function Navbar() {
               <NavLink to="/" end onClick={closeMenu}>
                 Home
               </NavLink>
+              <NavLink to="/daily" onClick={closeMenu}>
+                Daily
+              </NavLink>
+              <NavLink to="/progress" onClick={closeMenu}>
+                Progress
+              </NavLink>
               <NavLink to="/create" onClick={closeMenu}>
                 Create Task
               </NavLink>

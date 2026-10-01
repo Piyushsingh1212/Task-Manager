@@ -11,6 +11,8 @@ import Home from './pages/Home';
 import TaskDetails from './pages/TaskDetails';
 import CreateTask from './pages/CreateTask';
 import EditTask from './pages/EditTask';
+import DailyTasks from './pages/DailyTasks';
+import MonthlyProgress from './pages/MonthlyProgress';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
@@ -51,6 +53,22 @@ export default function App() {
                 element={
                   <ProtectedRoute>
                     <EditTask />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/daily"
+                element={
+                  <ProtectedRoute>
+                    <DailyTasks />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/progress"
+                element={
+                  <ProtectedRoute>
+                    <MonthlyProgress />
                   </ProtectedRoute>
                 }
               />
